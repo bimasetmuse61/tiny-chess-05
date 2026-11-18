@@ -118,6 +118,7 @@ def uci(m):
  return s
 def root():
  global ND,LIM
+ if len(TT)>2e5:TT.clear()
  ms=[]
  for m in gen(0):
   mk(m)
@@ -139,6 +140,6 @@ if __name__=="__main__":
   if g["status"]=="done":break
   while g["status"]=="your_move":
    try:
-    pf(g["fen"]);m=root();u=uci(m)if m is not None else g["legal_moves"][0]
+    pf(g["fen"]);m=root();u=uci(m)
     g=J("/move",{"game":g["game"],"move":u})
    except Exception:g=J("/game",{})
