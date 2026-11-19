@@ -1,6 +1,6 @@
 import json,os,urllib.request as U
 def J(p,b):return json.load(U.urlopen(os.getenv("MAKEFUN_ENV_URL")+p,data=json.dumps(b).encode()))
-V=(0,100,320,330,500,900,0)
+V=(0,100,320,330,500,900,0)#pv
 KN=((1,2),(2,1),(2,-1),(1,-2),(-1,-2),(-2,-1),(-2,1),(-1,2))
 D8=((1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1))
 DR=[KN,D8[4:],D8[:4],D8,D8]
@@ -80,15 +80,15 @@ def un():
  b,S,C,EP,k=UN.pop();B[:]=b;KP[:]=k
 PA=bytes((0,0,4,8,14,24,40,0));KF=bytes((20,25,10,0,0,10,25,20))
 def ev():
- s=q=0;kk=[0,0]
+ s=q=0;k=[0,0]
  for i,p in enumerate(B):
   if p:
    t=abs(p);f=i&7;w=(i^(p<0)*56)>>3;c=min(f,7-f)+min(w,7-w);g=1 if p>0 else-1
-   if t==6:kk[p<0]=(KF[f]if w<1 else max(-50,-15*w),8*c-24)
+   if t==6:k[p<0]=(KF[f]if w<1 else max(-50,-15*w),8*c-24)
    else:
     if t==5:q=1
     s+=g*(V[t]+(PA[w]if t==1 else 6*c-20 if t==2 else 4*c-8 if t==3 else(15 if w==6 else 0)if t==4 else 2*c-6))
- s+=kk[0][1-q]-kk[1][1-q]
+ s+=k[0][1-q]-k[1][1-q]
  return s
 def sc(m):return abs(B[(m>>6)&63])+(900 if m>>12 else 0)
 def sr(d,a,b):
